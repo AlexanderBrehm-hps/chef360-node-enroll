@@ -13,6 +13,8 @@
 module NodeManagementHelpers
   module Credentials
     def obtain_node_credentials(ssl_mode)
+      fqdn = new_resource.fqdn
+      host_name = new_resource.host_name
       chef_platform_url = new_resource.chef_platform_url
       cohort_id = new_resource.cohort_id
       access_key = new_resource.access_key
@@ -33,8 +35,23 @@ module NodeManagementHelpers
         'attributes' => [
           {
             'name' => 'fqdn',
-            'value' => node['ipaddress'],
+            'value' => fqdn,
             'namespace' => 'enroll',
+          },
+          {
+            'name' => 'hostname',
+            'value' => host_name,
+            'namespace' => 'agent',
+          },
+          {
+            'name' => 'os_name',
+            'value' => node['platform'],
+            'namespace' => 'agent',
+          },
+          {
+            'name' => 'os_version',
+            'value' => node['platform_version'],
+            'namespace' => 'agent',
           },
           {
             'name' => 'enrollment_source',

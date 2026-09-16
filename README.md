@@ -14,9 +14,11 @@ The `node_management_enroll` resource supports two levels of enrollment:
 ### Resource Parameters
 
 | Parameter          | Description                                                                                                      | Valid Value                                           | Default Value                  |
-|--------------------|----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------------------------|
-| `chef_platform_url`| The fully qualified domain name (FQDN) URL for the Chef 360 platform.                                             | A FQDN which must be accessible from the client node. | None                           |
+|--------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|--------------------------------|
+| `chef_platform_url`| The fully qualified domain name (FQDN) URL for the Chef 360 platform.                                            | A FQDN which must be accessible from the client node. | None                           |
 | `api_port`         | The API port configured in the Chef 360 platform.                                                                | A valid port number.                                  | `31000`                        |
+| `fqdn`             | The FQDN to pass to Chef360 during enrollment platform.                                                          | A string                                              | `node['fqdn']`                 |
+| `host_name`        | The hostname to pass to Chef360 during enrollment platform.                                                      | A string                                              | `node['hostname']`             |
 | `access_key`       | Access key for secure communication with Chef 360. Store securely (e.g., Encrypted Chef data bags, Vault).      | Valid token                                           | None                           |
 | `secret_key`       | Secret key for secure communication with Chef 360. Store securely (e.g., Encrypted Chef data bags, Vault).      | Valid token                                           | None                           |
 | `cohort_id`        | A UUID representing a cohort. It provides all required skills and settings to the assigned node.               | UUID                                                  | None                           |

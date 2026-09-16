@@ -1,4 +1,6 @@
 property :chef_platform_url, String, required: true
+property :fqdn, String, default: lazy { node['ipaddress'] }
+property :host_name, String, default: lazy { node['hostname'] }
 property :enroll_type, String, default: 'full'
 property :api_port, String, default: '31000'
 property :access_key, String, required: true, sensitive: true
